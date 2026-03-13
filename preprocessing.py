@@ -48,6 +48,9 @@ X_train, X_test, y_train, y_test = train_test_split(
 )
 
 # Store the pre-processed data
+df.to_csv("datasets/preprocessed_dataset.csv", index=False)
+
+# Store split data
 X_train.to_csv("datasets/train_features.csv", index=False)
 X_test.to_csv("datasets/test_features.csv", index=False)
 y_train.to_csv("datasets/train_target.csv", index=False)
