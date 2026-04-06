@@ -49,7 +49,7 @@ results_df['Predicted_Default'] = y_pred
 results_df['Probability_of_Default'] = y_probs
 
 results_df.to_csv("results/final_predictions.csv", index=False)
-print("✅ Predictions saved to 'results/final_predictions.csv'")
+print("Predictions saved to 'results/final_predictions.csv'")
 
 # 5. VISUALIZATIONS
 print("--- Generating Plots ---")
@@ -57,8 +57,13 @@ print("--- Generating Plots ---")
 # Plot 1: Confusion Matrix
 
 plt.figure(figsize=(8, 6))
-cm = confusion_matrix(y_test, y_pred)
-disp = ConfusionMatrixDisplay(confusion_matrix=cm, display_labels=['No Default', 'Default'])
+
+# 1. Use the 'labels' parameter to force the exact order of your classes (e.g., 1 then 0)
+cm = confusion_matrix(y_test, y_pred, labels=[1, 0])
+
+# 2. Make sure display_labels matches the exact order of the labels array above
+disp = ConfusionMatrixDisplay(confusion_matrix=cm, display_labels=['Default', 'No Default'])
+
 disp.plot(cmap='Blues', values_format='d')
 plt.title("Confusion Matrix: Loan Default Prediction")
 plt.savefig("results/confusion_matrix.png")
@@ -78,4 +83,4 @@ plt.legend(loc="lower right")
 plt.savefig("results/roc_curve.png")
 plt.show()
 
-print("\n✅ All results and plots saved in the 'results/' folder.")
+print("\nAll results and plots saved in the 'results/' folder.")

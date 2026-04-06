@@ -36,7 +36,7 @@ lr.fit(X_train_scaled, y_train)
 
 y_pred_lr = lr.predict(X_test_scaled)
 
-print("\n===== Logistic Regression =====")
+print("\nLogistic Regression")
 print("Accuracy:", accuracy_score(y_test, y_pred_lr))
 print(classification_report(y_test, y_pred_lr))
 
@@ -47,21 +47,21 @@ dt.fit(X_train, y_train)
 
 y_pred_dt = dt.predict(X_test)
 
-print("\n===== Decision Tree =====")
+print("\nDecision Tree")
 print("Accuracy:", accuracy_score(y_test, y_pred_dt))
 print(classification_report(y_test, y_pred_dt))
 
 joblib.dump(dt, "models/decision_tree.pkl")
 
-rf = RandomForestClassifier(n_estimators=100, random_state=42)
+rf = RandomForestClassifier(n_estimators=110, random_state=42)
 rf.fit(X_train, y_train)
 
 y_pred_rf = rf.predict(X_test)
 
-print("\n===== Random Forest =====")
+print("\nRandom Forest")
 print("Accuracy:", accuracy_score(y_test, y_pred_rf))
 print(classification_report(y_test, y_pred_rf))
 
 joblib.dump(rf, "models/random_forest.pkl")
 
-print("\n✅ Models and scaler saved in 'models/' folder")
+print("\nModels and scaler saved in 'models/' folder")
